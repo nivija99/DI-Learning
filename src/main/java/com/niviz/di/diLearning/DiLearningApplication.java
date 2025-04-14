@@ -1,6 +1,10 @@
 package com.niviz.di.diLearning;
 
+import com.niviz.di.diLearning.controllers.ConstructorInjectedController;
 import com.niviz.di.diLearning.controllers.MyController;
+import com.niviz.di.diLearning.controllers.PropertyInjectedController;
+import com.niviz.di.diLearning.controllers.SetterInjectedController;
+import com.niviz.di.diLearning.services.GreetingServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -16,6 +20,23 @@ public class DiLearningApplication {
 		String greeting = myController.sayhello();
 
 		System.out.println(greeting);
+
+		System.out.println("--------Property");
+
+		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
+		System.out.println(propertyInjectedController.getGreeting());
+
+		System.out.println("-------Setter");
+
+		SetterInjectedController setterInjectedController = (SetterInjectedController) ctx.getBean("setterInjectedController");
+		setterInjectedController.setGreetingService(new GreetingServiceImpl());
+		System.out.println(setterInjectedController.getGreeting());
+
+		System.out.println("------Constructor");
+
+		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
+		System.out.println(constructorInjectedController.getGreeting());
+
 	}
 
 }
