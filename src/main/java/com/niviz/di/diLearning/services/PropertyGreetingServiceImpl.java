@@ -3,10 +3,9 @@ package com.niviz.di.diLearning.services;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GreetingServiceImpl implements GreetingService{
-
+public class PropertyGreetingServiceImpl implements GreetingService{
     @Override
     public String sayGreeting() {
-        return "Say Hello!!!";
+        return "Hello World - Property";
     }
 }

@@ -4,7 +4,8 @@ import com.niviz.di.diLearning.controllers.ConstructorInjectedController;
 import com.niviz.di.diLearning.controllers.MyController;
 import com.niviz.di.diLearning.controllers.PropertyInjectedController;
 import com.niviz.di.diLearning.controllers.SetterInjectedController;
-import com.niviz.di.diLearning.services.GreetingServiceImpl;
+import com.niviz.di.diLearning.services.ConstructorGreetingServiceImpl;
+import com.niviz.di.diLearning.services.SetterGreetingService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -29,7 +30,7 @@ public class DiLearningApplication {
 		System.out.println("-------Setter");
 
 		SetterInjectedController setterInjectedController = (SetterInjectedController) ctx.getBean("setterInjectedController");
-		setterInjectedController.setGreetingService(new GreetingServiceImpl());
+		setterInjectedController.setGreetingService(new SetterGreetingService());
 		System.out.println(setterInjectedController.getGreeting());
 
 		System.out.println("------Constructor");
