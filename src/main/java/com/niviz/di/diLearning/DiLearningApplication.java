@@ -1,9 +1,6 @@
 package com.niviz.di.diLearning;
 
-import com.niviz.di.diLearning.controllers.ConstructorInjectedController;
-import com.niviz.di.diLearning.controllers.MyController;
-import com.niviz.di.diLearning.controllers.PropertyInjectedController;
-import com.niviz.di.diLearning.controllers.SetterInjectedController;
+import com.niviz.di.diLearning.controllers.*;
 import com.niviz.di.diLearning.services.ConstructorGreetingServiceImpl;
 import com.niviz.di.diLearning.services.SetterGreetingService;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +13,10 @@ public class DiLearningApplication {
 	public static void main(String[] args) {
 
 		ApplicationContext ctx = SpringApplication.run(DiLearningApplication.class, args);
+
+		InternationalController internationalController = (InternationalController) ctx.getBean("internationalController");
+		System.out.println(internationalController.sayHello());
+
 		MyController myController = (MyController) ctx.getBean("myController");
 
 		String greeting = myController.sayhello();
